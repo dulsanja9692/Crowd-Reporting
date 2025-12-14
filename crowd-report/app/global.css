@@ -1,0 +1,78 @@
+
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: #6366f1;
+    --secondary: #8b5cf6;
+    --accent: #06b6d4;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --safe: #10b981;
+    --background: #0f172a;
+    --card: #1e293b;
+    --text: #f1f5f9;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-text;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-white;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradien-to-r from-accent via-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-lg bg-card/70 border border-white/10 shadow-2xl;
+  }
+
+  .neumorphic {
+    @apply bg-card shadow-[inset_2px_2px_5px_#0d1424,inset_-2px_-2px_5px_#2d3748];
+  }
+
+  .pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .scan-line {
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(6, 182, 212, 0.1) 20%,
+      rgba(6, 182, 212, 0.3) 50%,
+      rgba(6, 182, 212, 0.1) 80%,
+      transparent
+    );
+    animation: scan 3s linear infinite;
+  }
+
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(400%); }
+  }
+}
